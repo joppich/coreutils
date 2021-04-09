@@ -1,7 +1,7 @@
-#[cfg(target_os = "linux")]
+#[cfg(not(target_os="windows"))]
 use crate::common::util::*;
 
-#[cfg(target_os = "linux")]
+#[cfg(not(target_os="windows"))]
 #[test]
 fn test_stdbuf_unbuffered_stdout() {
     // This is a basic smoke test
@@ -12,7 +12,7 @@ fn test_stdbuf_unbuffered_stdout() {
         .stdout_is("The quick brown fox jumps over the lazy dog.");
 }
 
-#[cfg(target_os = "linux")]
+#[cfg(not(target_os="windows"))]
 #[test]
 fn test_stdbuf_line_buffered_stdout() {
     new_ucmd!()
@@ -22,7 +22,7 @@ fn test_stdbuf_line_buffered_stdout() {
         .stdout_is("The quick brown fox jumps over the lazy dog.");
 }
 
-#[cfg(target_os = "linux")]
+#[cfg(not(target_os="windows"))]
 #[test]
 fn test_stdbuf_no_buffer_option_fails() {
     new_ucmd!()
@@ -40,7 +40,7 @@ fn test_stdbuf_no_buffer_option_fails() {
         );
 }
 
-#[cfg(target_os = "linux")]
+#[cfg(not(target_os="windows"))]
 #[test]
 fn test_stdbuf_trailing_var_arg() {
     new_ucmd!()
@@ -50,7 +50,7 @@ fn test_stdbuf_trailing_var_arg() {
         .stdout_is("jumps over the lazy dog.");
 }
 
-#[cfg(target_os = "linux")]
+#[cfg(not(target_os="windows"))]
 #[test]
 fn test_stdbuf_line_buffering_stdin_fails() {
     new_ucmd!()
@@ -60,7 +60,7 @@ fn test_stdbuf_line_buffering_stdin_fails() {
         .stderr_is("stdbuf: error: line buffering stdin is meaningless\nTry 'stdbuf --help' for more information.");
 }
 
-#[cfg(target_os = "linux")]
+#[cfg(not(target_os="windows"))]
 #[test]
 fn test_stdbuf_invalid_mode_fails() {
     new_ucmd!()
